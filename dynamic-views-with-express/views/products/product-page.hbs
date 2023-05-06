@@ -1,0 +1,33 @@
+
+<h1>product page</h1>
+
+<h2>{{name}}</h2>
+
+<img style="width: 300px" src="{{image}}" alt="">
+
+
+<hr>
+
+<h3>Price: ${{price}}</h3>
+
+<hr>
+
+{{#if buyItNow}}
+{{!-- hbs will not let you do if something > something --}}
+{{!-- it only lets you do super simple if conditions --}}
+{{!-- you have to give it a single phrase that can be tested for truthiness or falsiness --}}
+{{!-- this is a choice made by HBS and the reason they do it is to enforce the --}}
+{{!-- MVC architecture pattern --}}
+{{!-- it stands for Model View Controller --}}
+{{!-- hbs files are the views, the file with the routes inside of it is called the controller --}}
+{{!-- in this case app.js is our controller for now --}}
+{{!-- and we are not using models yet --}}
+{{!-- youre not supposed to write logic in the views, logic should be done in controllers and models --}}
+    <div>
+        <h2>
+            Buy It Now: ${{buyItNow}}
+        </h2>
+    </div>
+{{else}}
+    <h2>no buy it now for this item</h2>
+{{/if}}
