@@ -1,0 +1,19 @@
+<h1>Guitars Page</h1>
+
+
+{{#each guitars}}
+    <div>
+        <a href="/guitars/{{this._id}}">
+
+        <hr>
+        <h2>{{this.model}}</h2>
+        {{!-- <p>Condition: {{this.condition}}</p> --}}
+        <h3>Price: {{this.price}}</h3>
+        {{!-- <p>{{this.description}}</p> --}}
+        <img style="width: 50px" src="{{this.img}}" alt="">
+        <hr>
+
+
+        </a>
+    </div>
+{{/each}}
