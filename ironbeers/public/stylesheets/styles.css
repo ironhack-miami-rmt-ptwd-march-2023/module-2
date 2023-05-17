@@ -1,0 +1,24 @@
+/*
+white: #f7f9f9;
+light-blue: #2081c3;
+dark-blue: #0a2c42;
+grey: #bfbfbf;
+font-family: Arial, Helvetica, sans-serif;
+*/
+
+
+.beer-box{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+    overflow: scroll;
+    justify-content: center;
+    text-align: center;
+}
+
+.beer-parent{
+    display: flex;
+    flex-wrap: wrap;
+}
