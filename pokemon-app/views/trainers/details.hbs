@@ -1,0 +1,20 @@
+<h1>Trainer Details</h1>
+
+
+<h3>{{theTrainer.name}}</h3>
+<h4>Age: {{theTrainer.age}}</h4>
+<h5>Hometown: {{theTrainer.hometown}}</h5>
+
+<img src="{{theTrainer.img}}" style="height: 200px">
+
+
+
+<div>
+    <h3>Pokemon</h3>
+
+    {{#each pokemon}}
+        <p>
+            {{this.name}}
+        </p>
+    {{/each}}
+</div>

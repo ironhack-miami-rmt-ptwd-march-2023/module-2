@@ -34,6 +34,11 @@ app.use("/", pokemonRoutes);
 // for now, all routes have a "/" as the firsts argument.   we'll talk about it later
 // also, fun fact, route files are called controllers, this is the C in the MVC pattern
 
+const trainerRoutes = require("./routes/trainer-routes");
+app.use("/trainers", trainerRoutes);
+// the first arguments in app.use when you are connecting a routes file
+// represents a prefix that you are attaching to every single route 
+// in that file
 
 
 

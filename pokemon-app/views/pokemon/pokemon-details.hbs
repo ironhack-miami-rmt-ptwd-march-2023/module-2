@@ -4,15 +4,24 @@
 <h2>{{thePokemon.name}}</h2>
 <h3>Type: {{thePokemon.type}}</h3>
 <p>Evolves? {{thePokemon.evolves}}</p>
+<div>
+    Trainer: {{thePokemon.trainer.name}}
+</div>
 
 <img src="{{thePokemon.img}}" style="width: 300px">
 
+<hr>
 <h4>Moves</h4>
 {{#each thePokemon.moves}}
     <p>
         {{this}}
     </p>    
 {{/each}}
+<hr>
+
+
+<br>
+
 
 <a href="/pokemon/{{thePokemon._id}}/edit">Edit This Pokemon</a>
 

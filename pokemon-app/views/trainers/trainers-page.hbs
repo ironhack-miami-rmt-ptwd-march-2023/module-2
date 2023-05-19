@@ -1,0 +1,16 @@
+<h1>Trainers Page</h1>
+
+
+{{#each trainers}}
+    <div>
+        <hr>
+        <a href="/trainers/{{this._id}}">
+            <h3>{{this.name}}</h3>
+        </a>
+        <h5>Hometown: {{this.hometown}}</h5>
+        <p>Age: {{this.age}}</p>
+
+        <img src="{{this.img}}" style="height: 200px">
+        <hr>
+    </div>
+{{/each}}
