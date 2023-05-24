@@ -5,6 +5,7 @@ const Pokemon = require("../models/Pokemon");
 
 
 router.get("/", (req, res)=>{
+    
     // even though the route looks like its just "/"
     // its actually "/trainers"
     // because i have attached a "/trainers" prefix to every single route in this file

@@ -1,5 +1,9 @@
 <h1>Trainers Page</h1>
 
+{{#if theUserObject}}
+<h3> Welcome, {{theUserObject.username}} </h3>
+{{/if}}
+
 
 {{#each trainers}}
     <div>
