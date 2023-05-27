@@ -3,7 +3,7 @@
 {{!-- when you are talking about the name of your model views and controllers --}}
 {{!-- thats called a resource --}}
 {{!-- so pokemon is our resource in this example --}}
-<form action="/pokemon/create" method="POST">
+<form action="/pokemon/create" method="POST" enctype="multipart/form-data">
 
 <div>
     Name: 
@@ -17,7 +17,7 @@
 
 <div>
     Image: 
-    <input type="text" name="img">
+    <input type="file" name="img">
 </div>
 
 <div>

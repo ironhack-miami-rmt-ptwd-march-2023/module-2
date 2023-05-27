@@ -3,6 +3,7 @@ const router     = express.Router();
 const Pokemon    = require("../models/Pokemon.model");
 const User       = require("../models/User.model");
 const isLoggedIn = require("../utils/isLoggedIn");
+const uploader   = require("../config/cloudinary");
 
 
 
@@ -15,11 +16,12 @@ router.get("/pokemon/new", isLoggedIn, (req, res, next)=>{
 
 
 
-router.post("/pokemon/create", isLoggedIn, (req,res,next)=>{
+router.post("/pokemon/create", isLoggedIn, uploader.single("img"), (req,res,next)=>{
+
     Pokemon.create({
         name: req.body.pokemonName,
         type: req.body.pokemonType,
-        img: req.body.img,
+        img: req.file.path,
         evolves: req.body.evolves,
         moves: req.body.moves,
     }).then((response)=>{
@@ -80,14 +82,17 @@ router.get("/pokemon/:id/edit", (req, res,next)=>{
 
 
 
-router.post("/pokemon/:theID/update", (req, res, next)=>{
-    Pokemon.findByIdAndUpdate(req.params.theID,{
+router.post("/pokemon/:theID/update", uploader.single("img"), (req, res, next)=>{
+    let theUpdate = {
         name: req.body.pokemonName,
         type: req.body.pokemonType,
-        img: req.body.img,
         evolves: req.body.evolves,
-        moves: req.body.moves,
-    }).then(()=>{
+        moves: req.body.moves
+    }
+    if(req.file)theUpdate.img = req.file.path;
+
+
+    Pokemon.findByIdAndUpdate(req.params.theID,theUpdate).then(()=>{
         req.flash("success", "Pokemon Was Updated Successfully");
         res.redirect("/pokemon/"+req.params.theID);
     })

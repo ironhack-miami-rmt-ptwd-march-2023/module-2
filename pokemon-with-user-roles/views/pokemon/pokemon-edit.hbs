@@ -4,7 +4,7 @@
 <h1>Add a Pokemon to the Database</h1>
 
 
-<form action="/pokemon/{{thePokemon._id}}/update" method="POST">
+<form action="/pokemon/{{thePokemon._id}}/update" method="POST" enctype="multipart/form-data">
 
 <div>
     Name: 
@@ -16,10 +16,6 @@
     <input type="text" name="pokemonType" value="{{thePokemon.type}}">
 </div>
 
-<div>
-    Image: 
-    <input type="text" name="img" value="{{thePokemon.img}}">
-</div>
 
 <div>
     Evolves?:
@@ -45,6 +41,11 @@
 </div>
 
 
+<a href="#" id="uploadNew">Click Here to Upload a New Image for this Pokemon</a>
+<div id="imgInput">
+    Image: 
+    <input type="file" name="img">
+</div>
 
 
 
@@ -52,3 +53,6 @@
 
 
 </form>
+
+
+<script src="/js/editPokemon.js"></script>
