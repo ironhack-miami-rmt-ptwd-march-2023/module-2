@@ -47,7 +47,7 @@ router.post("/signup", async (req, res, next)=>{
             url: 'https://rapidprod-sendgrid-v1.p.rapidapi.com/mail/send',
             headers: {
               'content-type': 'application/json',
-              'X-RapidAPI-Key': '9fb50d731dmsh197ada14482901ep185a0ajsn2e30558f847a',
+              'X-RapidAPI-Key': process.env.RAPIDAPIKEY,
               'X-RapidAPI-Host': 'rapidprod-sendgrid-v1.p.rapidapi.com'
             },
             data: {
@@ -207,6 +207,7 @@ router.post("/logout", (req, res, next)=>{
       const theUser = await User.findOne({$and: [{username: req.body.username}, {email:req.body.email}]});
       if(!theUser){
         req.flash("error", "sorry incorrect username/email combo");
+        res.redirect("/reset-password/get-link");
         return
       } else {
         const options = {
@@ -214,7 +215,7 @@ router.post("/logout", (req, res, next)=>{
           url: 'https://rapidprod-sendgrid-v1.p.rapidapi.com/mail/send',
           headers: {
             'content-type': 'application/json',
-            'X-RapidAPI-Key': '9fb50d731dmsh197ada14482901ep185a0ajsn2e30558f847a',
+            'X-RapidAPI-Key': process.env.RAPIDAPIKEY,
             'X-RapidAPI-Host': 'rapidprod-sendgrid-v1.p.rapidapi.com'
           },
           data: {
