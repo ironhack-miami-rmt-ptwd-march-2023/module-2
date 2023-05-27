@@ -42,20 +42,19 @@ router.get("/pokemon", (req, res, next)=>{
 
 router.get("/pokemon/:id", (req, res, next)=>{
     const theID = req.params.id;
-
     Pokemon.findById(theID)
     .then((thePoke)=>{
-        if(req.session.currentUser){
-            User.findById(req.session.currentUser._id)
-            .then((theUser)=>{
-                let isMyPokemon = theUser.pokemon.some(function(poke) {
-                    return poke.equals(theID);
-                });
-                res.render("pokemon/pokemon-details", {thePokemon: thePoke, isMyPokemon: isMyPokemon})
-            })
-        } else {
-            res.render("pokemon/pokemon-details", {thePokemon: thePoke, isMyPokemon: false})
-        }
+        User.findOne({pokemon: thePoke._id})
+        .then((thePokemonTrainer)=>{
+            let trainerName = thePokemonTrainer? thePokemonTrainer.username : null;
+            if(req.session.currentUser){
+                let isMyPokemon = false;
+                if(thePokemonTrainer) isMyPokemon = thePokemonTrainer._id.equals(req.session.currentUser._id);
+                res.render("pokemon/pokemon-details", {thePokemon: thePoke, isMyPokemon: isMyPokemon, trainer: trainerName})
+            } else {
+            res.render("pokemon/pokemon-details", {thePokemon: thePoke, isMyPokemon: false, trainer: trainerName})
+            }
+        });
         })
     .catch((err)=>next(err));
 });

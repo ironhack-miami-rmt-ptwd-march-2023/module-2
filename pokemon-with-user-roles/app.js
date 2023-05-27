@@ -50,6 +50,9 @@ app.set('trust proxy', 1);
   app.use((req, res, next)=>{
     res.locals.user = req.session.currentUser || null;
     // this means in every hbs file i have a variable called {{user}}
+    let isAdmin = false;
+    if(req.session.currentUser && req.session.currentUser.Admin) isAdmin = true;
+    res.locals.isAdmin = isAdmin;
     res.locals.errorMessage = req.flash("error");
     res.locals.successMessage = req.flash("success");
     next();

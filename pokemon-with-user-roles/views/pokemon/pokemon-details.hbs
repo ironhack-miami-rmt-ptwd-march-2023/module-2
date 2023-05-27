@@ -5,6 +5,14 @@
 <h3>Type: {{thePokemon.type}}</h3>
 <p>Evolves? {{thePokemon.evolves}}</p>
 
+{{#if trainer}}
+<div>
+    Trainer: {{trainer}}
+</div>
+{{else}}
+<div>This Pokemon Is Wild</div>
+{{/if}}
+
 
 <img src="{{thePokemon.img}}" style="width: 300px">
 
@@ -32,6 +40,15 @@
 
 
 {{#if isMyPokemon}}
+    <a href="/pokemon/{{thePokemon._id}}/edit">Edit This Pokemon</a>
+
+    <br><br><br>
+
+    <form action="/pokemon/delete/{{thePokemon._id}}" method="POST">
+        <button>Delete This Pokemon</button>
+    </form>
+{{/if}}
+{{#if isAdmin}}
     <a href="/pokemon/{{thePokemon._id}}/edit">Edit This Pokemon</a>
 
     <br><br><br>
