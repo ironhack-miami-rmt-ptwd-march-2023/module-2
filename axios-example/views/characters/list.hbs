@@ -1,0 +1,12 @@
+<h2>Characters</h2>
+
+
+{{#each characters}}
+<div>
+<hr>
+<h3>{{this.name}}</h3>
+<p>Occupation: {{this.occupation}}</p>
+<form action="/characters/delete/{{this.id}}" method="POST"><button>Delete Character</button></form>
+<hr>
+</div>
+{{/each}}
